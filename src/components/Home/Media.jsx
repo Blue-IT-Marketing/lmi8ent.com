@@ -19,29 +19,44 @@ const ShowVideo = () => {
 // eslint-disable-next-line no-unused-vars
 const ShowMusic = ({media}) => {
 	return (
-		<Fragment>
-			<div className="box box-body">
-				<div className="box box-header">
-					<h3 className="box-title">
-						<i className='fa fa-music'> </i>  
-						{' '}{media.title}
-					</h3>
-				</div>
-
-			</div>
-		</Fragment>
-	);
+    <Fragment>
+      <div className="box box-info">
+        <div className="box box-header">
+          <h3 className="box-title">
+            <i className="fa fa-music"> </i> {media.title}
+          </h3>
+        </div>
+        <div className="box-footer">
+          {media.description}
+          <ul className="list-group">
+            <li className="list-group-item">Genre : {media.genre}</li>
+            <li className="list-group-item">Length : {media.play_time}</li>
+            <li className='list-group-item'>
+                <button
+                    type='button'
+                    className='btn btn-soundcloud btn-sm'
+                ><i className='fa fa-file-sound-o'> </i>
+                play
+                </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 // eslint-disable-next-line no-unused-vars
 const MediaItem = ({mediaItem}) => {
-	const[media,setMedia] = useState({
-		uid : '',
-		mediaid : '',
-		mediatype:'',
-		title: '',
-		description : '',
-		media_file : ''
-	});
+	const [media, setMedia] = useState({
+    uid: "",
+    mediaid: "",
+    mediatype: "",
+    title: "",
+    description: "",
+    genre: "",
+    media_file: "",
+    play_time: ""
+  });
     
 	useEffect(() => {
 		setMedia({
@@ -60,22 +75,26 @@ const MediaItem = ({mediaItem}) => {
 
 
 const initState = [
-	{
-		uid: '32427942834',
-		mediaid: '423423',
-		mediatype: 'music',
-		title: 'redemption song',
-		description: 'bob marley the wailers song about freedom',
-		media_file: ''
-	},{
-		uid: '32427942834',
-		mediaid: '423423',
-		mediatype: 'music',
-		title: 'Yellow',
-		description: 'Country Music',
-		media_file: ''
-
-	}
+  {
+    uid: "32427942834",
+    mediaid: "423423",
+    mediatype: "music",
+    title: "redemption song",
+    genre: "reggae",
+    description: "bob marley the wailers song about freedom",
+    media_file: "",
+    play_time: "3:42"
+  },
+  {
+    uid: "32427942834",
+    mediaid: "423423",
+    mediatype: "music",
+    title: "Yellow",
+    genre: "Country Music",
+    description: "American Golden Oldies",
+    media_file: "",
+    play_time: "4:55"
+  }
 ];
 
 // eslint-disable-next-line no-unused-vars
@@ -108,33 +127,24 @@ const Media = () => {
 						<i className="fa fa-medium"> </i> Media
 					</h3>
 				</div>
-				{mediafilesChunks.map((mediaFiles,index1) => {
-					return(
-					
+				{mediafilesChunks.map(mediaFiles => {
+					return(					
 						<div className='row'>
-							{
-								mediaFiles.map((mediaItem, index) => {
-									return (
-										<div className="col-lg-3">
-											<MediaItem
-												mediaItem={
-													mediaItem
-												}
-												key={
-													mediaItem.mediaid
-												}
-											/>
-                                        ;
-										</div>
-									);
-									
-								})
+							{mediaFiles.map(mediaItem => {
+								return (
+									<div className="col-lg-3">
+										<MediaItem 
+											mediaItem={mediaItem}
+											key={mediaItem.mediaid}
+										/>                                        
+									</div>
+								);									
+							})
 							}
 						</div>
 					);					
 				})
 				}
-
 			</div>
 		</Fragment>
 	);
