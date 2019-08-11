@@ -29,12 +29,13 @@ export default function Forget(){
 							<input type='email' className='form-control' name='username'/>
 						</div>
 						<div className='form-group'>
-							<button type='submit' className='btn btn-success btn-lg' onClick={e => sendRecoveryEmail(e)}><strong> <i className='fa fa-unlock-alt'> </i> Send Recovery Email</strong></button>
-              <Link to={routes.login_page}><button type='reset' className='btn btn-warning btn-lg'>
-                
-                <strong> <i className='fa fa-eraser'> </i> Cancel </strong>
-                
-              </button></Link>
+							<button type='submit' className='btn btn-success btn-lg' onClick={e => sendRecoveryEmail(e)}><strong> <i className='fa fa-unlock-alt'> </i> Recover</strong>
+							</button>
+              	<Link to={routes.login_page}>
+				  <button type='reset' className='btn btn-warning btn-lg'>                
+                	<strong> <i className='fa fa-eraser'> </i> Cancel </strong>                
+				  </button>
+				  </Link>
 						</div>
 					</form>
 				</div>
