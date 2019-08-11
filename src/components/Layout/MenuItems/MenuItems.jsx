@@ -35,13 +35,24 @@ const SideBarMenuAuth = () => {
 				<ul className="treeview-menu">
 					<li>
 						<Link to={routes.admin_page} title="manage your Account">
-							<i className="fa fa-sign-in"> </i> <strong> Account</strong>{' '}
-						</Link>{' '}
+							<i className="fa fa-sign-in"> </i> <strong> Account</strong>{" "}
+						</Link>{" "}
+					</li>
+					<li>
+						<Link to={routes.artist_profile} title="Artist Profile">
+							<i className="fa fa-user"> </i>{" "}
+							<strong> Profile Manager</strong>{" "}
+						</Link>{" "}
 					</li>
 				</ul>
 			</li>
 			<li>
-				<Link to={routes.blog_page} title='Blog'>
+				<Link to={routes.profiles} title="Profiles">
+					<i className="fa fa-users"> </i> Profiles
+				</Link>
+			</li>
+			<li>
+				<Link to={routes.blog_page} title="Blog">
 					<i className="fa fa-book"> </i> <strong>Blog</strong>
 				</Link>
 			</li>
@@ -68,6 +79,7 @@ const SideBarMenuNonAuth = () => {
 					<li><Link to={routes.home_page} title={settings.app_long_name}><i className="fa fa-home"> </i> Home</Link></li>
 					<li><Link to={routes.about_page} title="Contact Us"><i className="fa fa-info"> </i> About</Link></li>
 					<li><Link to={routes.contact_page} title="Contact Us"><i className="fa fa-envelope"> </i> Contact</Link></li>
+					<li><Link to={routes.profiles} title="Profiles"><i className="fa fa-users"> </i> Profiles</Link></li>
 					<li><Link to={routes.blog_page} title="Blog"><i className="fa fa-book"> </i> <strong>Blog</strong></Link></li>
 					<li><Link to={routes.login_page} title="Login"><i className="fa fa-sign-in"> </i> Login </Link></li>
 				</ul>

@@ -6,7 +6,11 @@ export default function Profile (){
 		<Fragment>
 			<div className='box box-body'>
 				<div className='box box-header'>
-					<h3 className='box-title'>Profile</h3>
+					<h3 className='box-title'>
+						<strong> <i className='fa fa-user'> </i>
+							{" "}Profile Manager
+						</strong>
+					</h3>
 				</div>
 			</div>
 
