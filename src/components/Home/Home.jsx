@@ -9,7 +9,7 @@ export default function Home (){
 				<div className='box-header'>
 					<h3 className='box-title'><strong> {settings.app_name}</strong></h3>
 					<div className='box-tools'>
-						<span><strong>{settings.app_long_name} - {settings.app_descrition}</strong></span>
+						<span><strong>{settings.app_long_name}</strong></span>
 					</div>
 				</div>
 
