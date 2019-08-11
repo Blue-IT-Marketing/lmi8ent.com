@@ -139,9 +139,7 @@ class SignUpForm extends Component {
                             type='button'
                             className='btn btn-primary btn-lg'
                             onClick={e => this.props.ShowLogin(e)}
-                        >
-                            
-                                <strong><i className='fa fa-sign-in'> </i> Login </strong>
+                        ><strong><i className='fa fa-sign-in'> </i> Login </strong>
                         </button>    
                     </div>
                     {error && <p>{error.message}</p>}
