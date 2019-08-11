@@ -42,76 +42,85 @@ export default function Login() {
 				const { doLogin, user_account_state } = context;
 				const { username, password } = values;
 				return (
-					<Fragment>
-						<div className="box box-body">
-							<div className="box-header">
-								<h3 className="box-title">
-									<strong>
-										<i className="fa fa-sign-in"> </i> Login User
-									</strong>
-								</h3>
-							</div>
-							<div className="box-footer">
-								<form
-									className="form-horizontal"
-									onSubmit={e => doLogin(username, password)}
-								>
-									<div className="form-group">
-										<Input
-											type="text"
-											className="form-control"
-											name="username"
-											placeholder="Login Name"
-											ref={usernameRef}
-											value={values.username}
-											onChange={e => handleChange(e)}
-										/>
-									</div>
-									<div className="form-group">
-										<Input
-											type="password"
-											className="form-control"
-											name="password"
-											placeholder="Password"
-											ref={passwordRef}
-											value={values.password}
-											onChange={e => handleChange(e)}
-										/>
-									</div>
-									<div className="form-group">
-										<button
-											type="button"
-											className="btn btn-success btn-lg"
-											ref={submitRef}
-											onClick={e => {
-												doLogin(username, password);
-												//navigate("/", true);
-											}}
-										>
-											<strong>
-												<i className="fa fa-sign-in"> </i> Login
-											</strong>
-										</button>
-										<Link to={routes.signup_page}>
-											<button type="button" className="btn btn-primary btn-lg">
-												<strong>
-													<i className="fa fa-sign-in"> </i> Subscribe
-												</strong>
-											</button>
-										</Link>
-										<Link to={routes.forget_password_page}>
-											<button type="button" className="btn btn-warning btn-lg">
-												<strong>
-													<i className="fa fa-unlock"> </i> Forget Password
-												</strong>
-											</button>
-										</Link>
-									</div>
-								</form>
-							</div>
-						</div>
-					</Fragment>
-				);
+          <Fragment>
+            <div className="box box-body">
+              <div className="box-header">
+                <h3 className="box-title">
+                  <strong>
+                    <i className="fa fa-sign-in"> </i> Login User
+                  </strong>
+                </h3>
+                <div className="box-tools">
+                  <Link to={routes.forget_password_page}>
+                    <button
+                      type="button"
+                      className="btn btn-box-tool"
+                    >
+                      <strong>
+                        <i className="fa fa-unlock"> </i> Forget
+                        Password
+                      </strong>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              <div className="box-footer">
+                <form
+                  className="form-horizontal"
+                  onSubmit={e => doLogin(username, password)}
+                >
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="username"
+                      placeholder="Login Name"
+                      ref={usernameRef}
+                      value={values.username}
+                      onChange={e => handleChange(e)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <Input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      placeholder="Password"
+                      ref={passwordRef}
+                      value={values.password}
+                      onChange={e => handleChange(e)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <button
+                      type="button"
+                      className="btn btn-success btn-lg"
+                      ref={submitRef}
+                      onClick={e => {
+                        doLogin(username, password);
+                        //navigate("/", true);
+                      }}
+                    >
+                      <strong>
+                        <i className="fa fa-sign-in"> </i> Login
+                      </strong>
+                    </button>
+                    <Link to={routes.signup_page}>
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-lg"
+                      >
+                        <strong>
+                          <i className="fa fa-sign-in"> </i> Subscribe
+                        </strong>
+                      </button>
+                    </Link>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </Fragment>
+        );
 			}}
 		</UserAccountContext.Consumer>
 	);
