@@ -10,13 +10,28 @@ import { auth } from '../../../firebase';
 
 const SignUpPage = (props) => {
     return (
-        <div className="sign-up">
-            <div className="box box-header">
-                <h3 className="box-title"> <strong> <i className='fa fa-sign-out'> </i> Sign Up</strong></h3>
-            </div>
-
-            <SignUpForm ShowLogin={props.ShowLogin}  />
+      <div className="sign-up">
+        <div className="box box-header">
+          <h3 className="box-title">
+            {" "}
+            <strong>
+              {" "}
+              <i className="fa fa-sign-out"> </i> Sign Up
+            </strong>
+          </h3>
+          <div className="box-tools">
+            <Link to={routes.login_page}>
+              <button type="button" className="btn btn-box-tool">
+                <strong>
+                  <i className="fa fa-sign-in"> </i> Login{" "}
+                </strong>
+              </button>
+            </Link>
+          </div>
         </div>
+
+        <SignUpForm ShowLogin={props.ShowLogin} />
+      </div>
     );
 };
 
@@ -85,7 +100,6 @@ class SignUpForm extends Component {
         return (
             <div className="col-md-6">
                 <form className="form-horizontal" onSubmit={this.onSubmit}>
-
                     <div className="form-group">
                         <input className="form-control"
                             value={username}
@@ -132,15 +146,14 @@ class SignUpForm extends Component {
                         <button
                             type='reset'
                             className='btn btn-warning btn-lg'
+                            onClick={e => {
+                                this.setState({
+                                    ...Initial_State
+                                })
+                            }}
                         >
                             <strong> <i className='fa fa-eraser'> </i> Reset  </strong>
                         </button>
-                        <button
-                            type='button'
-                            className='btn btn-primary btn-lg'
-                            onClick={e => this.props.ShowLogin(e)}
-                        ><strong><i className='fa fa-sign-in'> </i> Login </strong>
-                        </button>    
                     </div>
                     {error && <p>{error.message}</p>}
 
