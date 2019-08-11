@@ -1,14 +1,15 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 const config = {
- 	apiKey: "AIzaSyBtzdAXIhZ0CWOwfSrJ8S0nFKt8fPNHvXU",
- 	authDomain: "bigfeather.firebaseapp.com",
- 	databaseURL: "https://bigfeather.firebaseio.com",
- 	projectId: "bigfeather",
- 	storageBucket: "bigfeather.appspot.com",
- 	messagingSenderId: "1038866503460",
- 	appId: "1:1038866503460:web:5fb05ca8648994ac"
+    apiKey: "AIzaSyBGN8VRNLeg3hg0ZYKORHVocjWlC1e4ye4",
+    authDomain: "sabina-plaza.firebaseapp.com",
+    databaseURL: "https://sabina-plaza.firebaseio.com",
+    projectId: "sabina-plaza",
+    storageBucket: "",
+    messagingSenderId: "16238135105",
+    appId: "1:16238135105:web:8b129d8a7d8c00a2"
 };
+
 
 try{
 	!firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
@@ -16,7 +17,11 @@ try{
 	console.log('firebase app already configured');
 }
 
+
 const auth = firebase.auth();
+
+
+
 
 export {auth,
 	firebase

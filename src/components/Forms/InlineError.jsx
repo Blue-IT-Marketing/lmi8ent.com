@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class InlineError extends Component {
 	constructor(props){
 		super(props);
-		this.state= {message : this.props.message};
+		this.state= {message : this.props.message}
 	}
 	render() {
 		return (
@@ -13,6 +13,6 @@ export default class InlineError extends Component {
 					<h3 className={'box-title'}><em><small>{this.state.message}</small></em></h3>
 				</div>
 			</div>
-		);
+		)
 	}
 }

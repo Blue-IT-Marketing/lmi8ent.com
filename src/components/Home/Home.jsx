@@ -1,21 +1,20 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import {settings} from '../../constants';
 
 export default function Home (){
-  return (
-      <Fragment>
-        <div className='box box-body'>
-          <div className='box-header'>
-          <h3 className='box-title'> <strong> <i className='fa fa-music'> </i> Big Feather Music Portal </strong></h3>
-          </div>
+	const img_url ='/static/img/sabina.png';
+	return (
+		<Fragment>
+			<div className='box box-body'>
+				<div className='box-header'>
+					<h3 className='box-title'><strong> {settings.app_name}</strong></h3>
+					<div className='box-tools'>
+						<span><strong>{settings.app_long_name} - {settings.app_descrition}</strong></span>
+					</div>
+				</div>
 
-          Big feather music portal allows you to share your music online with your peers and also clients
-          
-            
-
-
-        </div>  
-      </Fragment>    
-  )
+				<img src={img_url}  />
+			</div>
+		</Fragment>    
+	);
 }

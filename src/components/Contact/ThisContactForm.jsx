@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {Utils} from '../../utilities';
 import InlineError from "../Forms/InlineError";
-
 export let contact_form_details  = {
             messageid:"",
             names : "",
@@ -34,13 +33,10 @@ let contact_form_errors = {
 class ThisContactForm extends Component {
     constructor (){
         super();
+
         this.state = {
-            contact_form : {
-                ...contact_form_details
-            },
-            form_errors: {
-                ...contact_form_errors
-            },
+            contact_form : {...contact_form_details},
+            form_errors: {...contact_form_errors},
             form_messages : '',
         };
         this.change = this.change.bind(this);
@@ -66,7 +62,7 @@ class ThisContactForm extends Component {
         console.log(data);
         let self = this;
 
-        axios.post("/api/contact/submit-contact-form","data=" + data).then( function(response){
+        axios.post("/api/contact","&data=" + data).then( function(response){
             if (response.status === 200){
                 return response.data;
             }
