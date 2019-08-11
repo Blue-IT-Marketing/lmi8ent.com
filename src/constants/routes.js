@@ -18,3 +18,8 @@ export const artist_profile = '/admin/profile';
 export const profiles = '/profiles';
 
 export const dashboard_page = '/dashboard'; // site owner and administrator only
+
+
+
+// api routes
+export const media_files = '/media';
