@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import {settings} from '../../constants';
 
 export default function Home (){
-	const img_url ='/static/img/sabina.png';
+	
 	return (
 		<Fragment>
 			<div className='box box-body'>
@@ -13,7 +13,7 @@ export default function Home (){
 					</div>
 				</div>
 
-				<img src={img_url}  />
+			
 			</div>
 		</Fragment>    
 	);

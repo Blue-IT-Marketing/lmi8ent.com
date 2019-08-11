@@ -23,6 +23,7 @@ import UserAccountContextProvider from '../../context/UserAccount/userAccountCon
 import Dashboard from '../Dashboard/Dashboard';
 import Blog from '../Blog/Blog';
 import Account from '../Account/Account';
+import Profile from '../Profile/Profile';
 
 
 export default function App () {
@@ -52,6 +53,10 @@ export default function App () {
 
 								<Route path={routes.blog_page} component={Blog} />
 								<Route path={routes.dashboard_page} component={Dashboard} />
+
+								<Route path={routes.profiles} component={Profile} />
+								
+								<Route path={routes.artist_profile} component={Profile}/>
 								<Route exact path={routes.admin_page} component={Account} />
 							</section>
 						</section>
