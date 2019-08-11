@@ -41,7 +41,7 @@ const SideBarMenuAuth = () => {
 				</ul>
 			</li>
 			<li>
-				<Link to={routes.blog_page} title="Weq Trading Blog">
+				<Link to={routes.blog_page} title='Blog'>
 					<i className="fa fa-book"> </i> <strong>Blog</strong>
 				</Link>
 			</li>

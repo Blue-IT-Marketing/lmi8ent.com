@@ -1,7 +1,7 @@
 import React, { Fragment,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import MenuItems from '../MenuItems/MenuItems';
-import { routes } from '../../../constants';
+import { routes, settings } from '../../../constants';
 
 import { UserAccountContext } from "../../../context/UserAccount/userAccountContext";
 
@@ -32,10 +32,10 @@ export default function SideBar (){
               <div className="user-panel">
                 <div className="pull-left image">
                   <img
-                    src="/static/dist/img/sms.jpeg"
+                    src={settings.small_logo_url}
                     id="strSideUserImageID"
                     className="img-circle"
-                    alt="Weq-Trading"
+                    alt={settings.app_name}
                   />
                 </div>
                 <div className="pull-left info">
