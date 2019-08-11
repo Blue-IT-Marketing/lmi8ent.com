@@ -124,7 +124,7 @@ class SignUpForm extends Component {
                     <div className="form-group">
 
                         <button 
-                            disabled={isInvalid} 
+                            // disabled={isInvalid} 
                             type="submit" 
                             className="btn btn-success btn-lg">
                             <strong> <i className="fa fa-sign-in"> </i> Sign Up </strong>

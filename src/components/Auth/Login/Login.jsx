@@ -95,7 +95,7 @@ export default function Login() {
 										<Link to={routes.signup_page}>
 											<button type="button" className="btn btn-primary btn-lg">
 												<strong>
-													<i className="fa fa-eraser"> </i> Subscribe
+													<i className="fa fa-sign-in"> </i> Subscribe
 												</strong>
 											</button>
 										</Link>
