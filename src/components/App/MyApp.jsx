@@ -27,9 +27,12 @@ import Profile from '../Profile/Profile';
 import Profiles from '../Profile/Profiles';
 
 
-export default function App () {
 
+
+export default function App () {
+	
 	return (
+		
 		<UserAccountContextProvider>
 			<Fragment>
 				<Router>
