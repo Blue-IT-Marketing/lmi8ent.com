@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {routes,settings} from '../../../constants';
 import {firebase,auth} from '../../../firebase';
-
 import { UserAccountContext } from '../../../context/UserAccount/userAccountContext';
+
 const SideBarMenuAuth = () => {
 	return (
 		<ul className="sidebar-menu">

@@ -95,9 +95,9 @@ export default function Login() {
 											<i className="fa fa-sign-in"> </i> Login
 										</strong>
 									</button>
-									<button type="reset" className="btn btn-primary btn-lg">
+									<button type="button" className="btn btn-primary btn-lg">
 										<strong>
-											<i className="fa fa-eraser"> </i> Cancel
+											<i className="fa fa-eraser"> </i> Subscribe
 										</strong>
 									</button>
 									<Link to={routes.forget_password_page}>

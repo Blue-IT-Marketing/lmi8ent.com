@@ -35,9 +35,7 @@ export default function Profile (){
                     </div>
                   </form>
                 </div>
-
           </div>
-
       </Fragment>
   )
 }
