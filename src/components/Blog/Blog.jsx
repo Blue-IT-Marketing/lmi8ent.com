@@ -11,7 +11,7 @@ function BlogPost({ post_data }) {
 	const [post, setPost] = useState({});
 
 	let article = post_data;
-	
+	console.log('Articles',article);
 	return (
 		<Fragment>
 			<div className="box box-body with-border">
@@ -30,6 +30,14 @@ function BlogPost({ post_data }) {
 								{article.source.name} - {article.author}{' '}
 							</h3>
 						</a>
+						<button
+							type='button'
+							className='btn btn-primary'
+							onClick={e => {}}
+						>
+							<i className='fa fa-file-pdf-o'> </i>{' '}
+              Read more...
+						</button>
 					</div>
 				</div>
 			</div>
@@ -38,68 +46,82 @@ function BlogPost({ post_data }) {
 }
 
 export default function Blog() {
-	const[category,setCategory] = useState('entertainment');
+	const[category,setCategory] = useState('sports');
 	const [posts, setPosts] = useState([]);
-  const forceUpdate = useForceUpdate();
+	const forceUpdate = useForceUpdate();
 
 	useEffect(() => {
 		async function fetchData() {
 			let blog_posts = await get_blog_articles(category);			
 			setPosts(blog_posts);
 		}
-    fetchData();    
-    forceUpdate();
-    console.log('Force update called');
+		fetchData();    
+		forceUpdate();
+		console.log('Force update called');
 
 	}, [category]);
   
+  const title = `${category[0].toUpperCase()}${category.slice(1)} News`;
+  
 	return (
-		<Fragment>
-			<div className="box box-body">
-				<div className="box box-header">
-					<h3 className="box-title">
-						<strong>
-							{' '}
-							<i className="fa fa-file-text"> </i> Blog{' '}
-						</strong>
-					</h3>
+    <Fragment>
+      <div className="box box-body">
+        <div className="box box-header">
+          <h3 className="box-title">
+            <strong>
+              {" "}
+              <i className="fa fa-file-text"> </i> Blog{" "}
+            </strong>
+          </h3>
 
-					<div className="box-tools">
-						<button
-							type="button"
-							className="btn btn-box-tool"
-							name="pages"
-							onClick={() => setCategory('entertainment')}
-						>
-							<i className="fa fa-file-text"> </i> Entertainment{' '}
-						</button>
+          <div className="box-tools">
+            <button
+              type="button"
+              className="btn btn-box-tool"
+              name="pages"
+              onClick={() => setCategory("entertainment")}
+            >
+              <i className="fa fa-folder"> </i> Entertainment{" "}
+            </button>
 
-						<button
-							type="button"
-							className="btn btn-box-tool"
-							name="posts"
-							onClick={() => setCategory('sports')}
-						>
-							<i className="fa fa-file-text"> </i> Sports{' '}
-						</button>
-						<button
-							type="button"
-							className="btn btn-box-tool"
-							name="categories"
-							onClick={() => setCategory('business')}
-						>
-							{' '}
-							<i className="fa fa-folder-open"> </i> Business{' '}
-						</button>
-					</div>
-				</div>
+            <button
+              type="button"
+              className="btn btn-box-tool"
+              name="posts"
+              onClick={() => setCategory("sports")}
+            >
+              <i className="fa fa-folder"> </i> Sports{" "}
+            </button>
+            <button
+              type="button"
+              className="btn btn-box-tool"
+              name="categories"
+              onClick={() => setCategory("business")}
+            >
+              {" "}
+              <i className="fa fa-folder"> </i> Business{" "}
+            </button>
+            <button
+              type="button"
+              className="btn btn-box-tool"
+              name="categories"
+              onClick={() => setCategory("tech")}
+            >
+              {" "}
+              <i className="fa fa-folder"> </i> Tech{" "}
+            </button>
+          </div>
+        </div>
 
-				
-					{posts.map((post, index) => {
-						return <BlogPost post_data={post} key={index} />;
-					})}
-					
-			</div>
-		</Fragment>
-	);
+        <div className="box box-footer">
+          <div className="box box-header">
+            <h3 className='box-title'><strong> <i className='fa fa-files-o'> </i> {title}  </strong></h3>
+          </div>
+          {posts.map((post, index) => {
+            return <BlogPost post_data={post} key={index} />;
+          })}
+        </div>
+      </div>
+    </Fragment>
+  );
 }

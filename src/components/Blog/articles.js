@@ -19,21 +19,21 @@ let articles_api = {
 	this_pagesize :return_page_size(),
 	entertainment_news: 'https://newsapi.org/v2/top-headlines?country=za&category=entertainment&apiKey=41e896a0a1c94b61903408fae1a49471',
 	sports_news: 'https://newsapi.org/v2/top-headlines?country=za&category=sports&apiKey=41e896a0a1c94b61903408fae1a49471',
-	business_news: 'https://newsapi.org/v2/top-headlines?country=za&category=business&apiKey=41e896a0a1c94b61903408fae1a49471'
+    business_news: 'https://newsapi.org/v2/top-headlines?country=za&category=business&apiKey=41e896a0a1c94b61903408fae1a49471',
+    tech_news: 'https://newsapi.org/v2/top-headlines?country=za&category=technology&apiKey=41e896a0a1c94b61903408fae1a49471'
 };
-export async function get_blog_articles({category}) {	
+export async function get_blog_articles(category) {	
 	let results = '';
 	let apiRequest = '';
-    console.log('CATEGORY',category);
-	if (category){
+    console.log('CATEGORY',category);	
 		switch(category){
-		case 'entertainment': apiRequest = articles_api.entertainment_news;break;
-		case 'sports' : apiRequest = articles_api.sports_news;break;
-		case 'business' : apiRequest = articles_api.business_news;break;
-		default: apiRequest = articles_api.entertainment_news;break;        
-		}}else{
-		apiRequest = articles_api.entertainment_news;
-	}
+            case 'entertainment': apiRequest = articles_api.entertainment_news;break;
+            case 'sports' : apiRequest = articles_api.sports_news;break;
+            case 'business' : apiRequest = articles_api.business_news;break;
+            case 'tech' : apiRequest = articles_api.tech_news;break;
+            default: apiRequest = articles_api.entertainment_news;break;        
+        }
+        
 	await Axios.get(apiRequest).then(result => {
 		if (result.status === 200) {
 			return result.data;
