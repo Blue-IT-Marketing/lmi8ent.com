@@ -174,7 +174,7 @@ const Media = () => {
 						<form
 							onSubmit={e => onSearch(e)}
 							method="get"
-							className="sidebar-form"
+							className="sidebar-form box-tool"
 						>
 							<div className="input-group">
 								<input
