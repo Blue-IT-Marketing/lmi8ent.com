@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-export let app_name = 'Iml8nt';
+export let app_name = 'iml8ent';
 export let app_long_name = 'Internet Media Latent';
 export let app_descrition = 'an undiscovered media portal';
 export let cell = '0848626414';
-export let email = 'info@Iml8nt.com';
+export let email = 'info@iml8ent.com';
 export let fax = '086****786';
-export let localStorageKey = 'Iml8nt-';
+export let localStorageKey = 'iml8ent-';
 
 
-export let small_logo_url = '';
+export let small_logo_url = '../assets/logo/logo.PNG';
 
 export let maps_url = '';
 export let business_address = ``;

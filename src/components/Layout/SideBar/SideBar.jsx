@@ -2,7 +2,7 @@ import React, { Fragment,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import MenuItems from '../MenuItems/MenuItems';
 import { routes, settings } from '../../../constants';
-
+import logo_url from '../../../assets/logos/logo.PNG';
 import { UserAccountContext } from "../../../context/UserAccount/userAccountContext";
 
 export default function SideBar (){
@@ -32,7 +32,7 @@ export default function SideBar (){
 							<div className="user-panel">
 								<div className="pull-left image">
 									<img
-										src={settings.small_logo_url}
+										src={logo_url}
 										id="strSideUserImageID"
 										className="img-circle"
 										alt={settings.app_name}

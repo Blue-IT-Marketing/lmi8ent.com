@@ -20,7 +20,9 @@ let articles_api = {
 	entertainment_news: 'https://newsapi.org/v2/top-headlines?country=za&category=entertainment&apiKey=41e896a0a1c94b61903408fae1a49471',
 	sports_news: 'https://newsapi.org/v2/top-headlines?country=za&category=sports&apiKey=41e896a0a1c94b61903408fae1a49471',
     business_news: 'https://newsapi.org/v2/top-headlines?country=za&category=business&apiKey=41e896a0a1c94b61903408fae1a49471',
-    tech_news: 'https://newsapi.org/v2/top-headlines?country=za&category=technology&apiKey=41e896a0a1c94b61903408fae1a49471'
+    tech_news: 'https://newsapi.org/v2/top-headlines?country=za&category=technology&apiKey=41e896a0a1c94b61903408fae1a49471',
+    science_news: 'https://newsapi.org/v2/top-headlines?country=za&category=science&apiKey=41e896a0a1c94b61903408fae1a49471',
+    health_news: 'https://newsapi.org/v2/top-headlines?country=za&category=health&apiKey=41e896a0a1c94b61903408fae1a49471'
 };
 export async function get_blog_articles(category) {	
 	let results = '';
@@ -31,6 +33,8 @@ export async function get_blog_articles(category) {
             case 'sports' : apiRequest = articles_api.sports_news;break;
             case 'business' : apiRequest = articles_api.business_news;break;
             case 'tech' : apiRequest = articles_api.tech_news;break;
+            case 'science': apiRequest = articles_api.science_news;break;
+            case 'health' : apiRequest = articles_api.health_news;break;
             default: apiRequest = articles_api.entertainment_news;break;        
         }
         

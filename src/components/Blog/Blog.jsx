@@ -46,7 +46,7 @@ function BlogPost({ post_data }) {
 }
 
 export default function Blog() {
-	const[category,setCategory] = useState('sports');
+	const[category,setCategory] = useState('entertainment');
 	const [posts, setPosts] = useState([]);
 	const forceUpdate = useForceUpdate();
 
@@ -62,7 +62,7 @@ export default function Blog() {
 	}, [category]);
   
   const title = `${category[0].toUpperCase()}${category.slice(1)} News`;
-  
+
 	return (
     <Fragment>
       <div className="box box-body">
@@ -110,12 +110,34 @@ export default function Blog() {
               {" "}
               <i className="fa fa-folder"> </i> Tech{" "}
             </button>
+            <button
+              type="button"
+              className="btn btn-box-tool"
+              name="categories"
+              onClick={() => setCategory("science")}
+            >
+              {" "}
+              <i className="fa fa-folder"> </i> Science{" "}
+            </button>
+            <button
+              type="button"
+              className='btn btn-box-tool'
+              name='categories'
+              onClick={() => setCategory("health")}
+            >{" "} <i className='fa fa-folder'> </i> Health
+
+            </button>
           </div>
         </div>
 
         <div className="box box-footer">
           <div className="box box-header">
-            <h3 className='box-title'><strong> <i className='fa fa-files-o'> </i> {title}  </strong></h3>
+            <h3 className="box-title">
+              <strong>
+                {" "}
+                <i className="fa fa-files-o"> </i> {title}{" "}
+              </strong>
+            </h3>
           </div>
           {posts.map((post, index) => {
             return <BlogPost post_data={post} key={index} />;
