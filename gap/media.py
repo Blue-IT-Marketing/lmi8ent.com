@@ -114,16 +114,47 @@ class Videos (Media):
             video.key.delete()
 
         return video
-        
+
 
     def updateVideo(self,video):
-        pass
+        
+        video_query = Videos.query(Videos.vid == video['vid'])
+        video_list = video_query.fetch()
+
+        if (len(video_list) > 0):
+            video_file = video_list[0]
+            video_file.filename = video['filename']
+            video_file.description = video['description']
+            video_file.art = video['art']
+            video_file.size = video['size']
+            video_file.put()
+
+            return video_file
+        else:
+            return ''
+
 
     def getVideoFiles(self,vid):
-        pass
+        video_query = Videos.query(Videos.vid == vid)
+        video_list = video_query.fetch()
 
-    def getAllVideoFiles(self,vid):
-        pass
+        if (len(video_list) > 0):
+            video_file = video_list[0]
+            return video_file
+        else:
+            return ''
+
+
+
+    def getAllVideoFiles(self,uid):
+
+        video_query = Videos.query(Video.uid == uid)
+        video_list = video_query.fetch()
+
+        return video_list
+
+        
+        
 
 
     
