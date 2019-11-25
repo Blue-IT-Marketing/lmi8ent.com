@@ -3,7 +3,7 @@ import webapp2
 import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
-import logging,json
+import logging,json,datetime
 
 class Media(ndb.Expando):
     uid = ndb.StringProperty()
@@ -16,10 +16,78 @@ class Media(ndb.Expando):
     def create_id(self, size=64, chars=string.ascii_lowercase + string.digits):
         return ''.join(random.choice(chars) for x in range(size))
 
+class Album(ndb.Expando):
+    uid = ndb.StringProperty()
+    album_id = ndb.StringProperty()
+    album_name = ndb.StringProperty()
+    description = ndb.StringProperty()
+    genre = ndb.StringProperty()
+    playtime = ndb.StringProperty()
+    timestamp = ndb.StringProperty()
+
+    def create_id(self, size=64, chars=string.ascii_lowercase + string.digits):
+        return ''.join(random.choice(chars) for x in range(size))
+
+
+    def addAlbum(self,album):
+
+        album_instance = Album()
+        album_instance.uid = album['uid']
+        album_instance.album_id = self.create_id()
+        album_instance.album_name = album['album_name']
+        album_instance.description = album['description']
+        album_instance.genre = album['genre']
+        album_instance.timestamp = datetime.datetime.now()
+        album_instance.put()
+
+        return album_instance
+
+
+    def removeAlbum(self,album_id):
+
+        album_query = Album.query(Album.album_id == album_id)
+        album_list = album_query.fetch()
+
+        for album in album_list:
+            album.key.delete()
+
+        return album
+
+
+    def updateAlbum(self,album):
+        album_query = Album.query(Album.album_id == album['album_id'])
+        album_list = album_query.fetch()
+
+        if(len(album_list) > 0):
+            album_file = album_list[0]
+            album_file.album_name = album['album_name'] 
+            album_file.description = album['description']
+            album_file.genre = album['genre']
+            album_file.timestamp = datetime.datetime.now()
+
+            return album_file
+        else:
+            return ''
+
+    def getAlbum(self,album_id):
+        album_query = Album.query(Album.album_id == album_id)
+        album_list = album_query.fetch()
+
+        if (len(album_list) > 0):
+            album_file = album_list[0]
+            return album_file
+        else:
+            return ''
+
+    
+    def getAllAlbums(self,uid):
+        album_query = Album.query(Album.uid == uid)
+        return album_query.fetch()
+
 
 class Music (Media):    
     mid = ndb.StringProperty()
-
+    album_id = ndb.StringProperty()
     
     def addMusic(self,music):
         
@@ -153,7 +221,7 @@ class Videos (Media):
 
         return video_list
 
-        
+
         
 
 
