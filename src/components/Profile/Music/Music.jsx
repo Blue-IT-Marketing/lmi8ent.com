@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import UploadMusic from './UploadMusic';
 import ListMusic from './ListMusic';
+import { CreateAlbums, ListAlbums } from './Albums';
 
 const Music = () => {
     const [display,setDisplay] = useState('upload-music')
@@ -49,6 +50,8 @@ const Music = () => {
 
                 {display === 'upload-music' ? <UploadMusic /> : null}
                 {display === 'list-music' ? <ListMusic /> : null}
+                {display === 'create-albums' ? <CreateAlbums /> : null }
+                {display === 'list-albums' ? <ListAlbums /> : null}
 
 			</div>
 		</Fragment>

@@ -45,10 +45,10 @@ export const load_music_files = async uid => {
 };
 
 
-export const create_album = async album => {
+export const create_album = async (uid ,album) => {
 	let results = { status: true, payload: [], error: {} };
 
-	await axios.post(profile_routes.albums_api,album).then(response => {
+	await axios.post(profile_routes.albums_api + `/{uid}`,album).then(response => {
 		if (response.status === 200){
 			return response.data;
 		}

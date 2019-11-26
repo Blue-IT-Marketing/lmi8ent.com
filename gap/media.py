@@ -22,6 +22,7 @@ class Album(ndb.Expando):
     album_name = ndb.StringProperty()
     description = ndb.StringProperty()
     genre = ndb.StringProperty()
+    number_songs = ndb.StringProperty(default='0')
     playtime = ndb.StringProperty()
     timestamp = ndb.StringProperty()
 
@@ -37,6 +38,7 @@ class Album(ndb.Expando):
         album_instance.album_name = album['album_name']
         album_instance.description = album['description']
         album_instance.genre = album['genre']
+        album_instance.number_songs = '0'
         album_instance.timestamp = datetime.datetime.now()
         album_instance.put()
 

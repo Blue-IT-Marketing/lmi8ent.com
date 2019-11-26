@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import {
 	album_file_type,
@@ -9,14 +10,16 @@ import * as profile_api from '../profile.api';
 import {Utils} from '../../../utilities';
 
 import {UserAccountContext} from '../../../context/UserAccount/userAccountContext';
+import InlineMessage from '../../Forms/InlineMessage';
+import InlineError from '../../Forms/InlineError';
 
-const CreateAlbums = () => {
+export const CreateAlbums = () => {
 	const [album,setAlbum] = useState(album_file_type);
 	const [errors, setErrors] = useState(album_file_errors_type);
 	const [inline,setInline] = useState({message:'',message_type:'inf'});
 
 	const {user_account_state} = useContext(UserAccountContext);
-
+	const uid = user_account_state.user_account.uid;
 	const onCheckErrors = async () => {
 		
 		let isError = false;
@@ -25,7 +28,7 @@ const CreateAlbums = () => {
 			if(Utils.isEmpty(album.album_name)){
 				setErrors({...errors,album_name_error : 'album name cannot be empty'});
 				return true;
-			};
+			}
 			return false;
 		};
 
@@ -46,25 +49,33 @@ const CreateAlbums = () => {
 
 		};
 
-		await check_album_name() ? isError = true : null ;
-		await check_description() ? isError = true : null;
-		await check_genre() ? isError = true : null;
+		(await check_album_name()) ? (isError = true) : (isError = isError);
+		await check_description() ? (isError = true) : (isError = isError);
+		(await check_genre()) ? (isError = true) : (isError = isError);
 
 		return isError;
 	};
 
 	const doCreateAlbum = async () => {
-		const results = {status : true, payload : {}, error:{}};
-		const uid = user_account_state.user_account.uid;
-
-		profile_api.create_album(album).then(response => {
+		
+		await profile_api.create_album(uid,album).then(response => {
 			if(response.status === 200){
 				setAlbum(response.payload);				
+			}else{
+				setInline({message:response.error.message,message_type:'error'});
 			}
-		})
-
-
+		}).catch(error => {
+			setInline({message:error.message,message_type:'error'});
+		});
+		return true;
 	};
+
+	useEffect(() => {
+		setAlbum({...album_file_type,uid});	
+		return () => {
+			setAlbum({ ...album_file_type, uid : '' });
+		};
+	}, []);
 
 	return(
 		<Fragment>
@@ -83,6 +94,7 @@ const CreateAlbums = () => {
 							value={album.album_name}
 							onChange={e => setAlbum({...album,[e.target.name]: e.target.value})}
 						/>
+						{errors.album_name_error ? <InlineError message={errors.album_name_error} /> : null}
 					</div>
 
 					<div className='form-group'>
@@ -94,6 +106,7 @@ const CreateAlbums = () => {
 							value={album.description}
 							onChange={e => setAlbum({...album,[e.target.name]: e.target.value})}
 						/>
+						{errors.description_error ? <InlineError message={errors.description_error} /> : null}
 					</div>
 
 					<div className='form-group'>
@@ -105,6 +118,7 @@ const CreateAlbums = () => {
 							value={album.genre}
 							onChange={e => setAlbum({...album,[e.target.name]: e.target.value})}							
 						/>
+						{errors.genre_error ? <InlineError message={errors.genre_error} /> : null}
 					</div>
 
 					<div className='form-group'>
@@ -117,28 +131,64 @@ const CreateAlbums = () => {
 									throw new Error('there was an error processing form');
 								}
 								doCreateAlbum(e).then(response => {
-									if (response.status){
-										setInline({message : 'successfully created new album', message_type:'inf'})
-									}else{
-										setInline({message : response.error.message,message_type : 'error'})
-									}
+									console.log('response : ',response);
 								}).catch(error => {
 									setInline({message:error.message,message_type:'error'});
-								})
+								});
+							}).catch(error => {
+								setInline({ message: error.message, message_type: 'error' });
 							})}
-						>
-
+						>Add Album
 						</button>
-					</div>					
 
-					
+						<button
+							type='button'
+							className='btn btn-warning btn-lg'
+							name='reset'
+							onClick={e => {
+								setErrors(album_file_errors_type);
+								setAlbum({...album_file_type,uid});
+								setInline({message:'',message_type:'inf'});
+							}}
 
+						>Reset
+						</button>
+					</div>		
+					<div className='form-group'>
+						{inline.message ? <InlineMessage message={inline.message} message_type={inline.message_type} /> : null}
+					</div>							
 				</form>
 
 			</div>
 		</Fragment>
+	);
+};
+
+
+export const ListAlbums = () => {
+	return(
+		<Fragment>
+			<div className='box box-body'>
+				<div className='box box-header'>
+					<h3 className='box-title'> Album List</h3>
+				</div>
+
+				<table className='table table-responsive'>
+					<thead>
+						<tr>
+							<td>Album Name</td>
+							<td>Description</td>
+							<td>Genre</td>
+							<td></td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</Fragment>
 	)
 }
+
+
 
 const Albums = () => {
 

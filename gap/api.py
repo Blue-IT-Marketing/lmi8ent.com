@@ -73,6 +73,23 @@ class APIRouterHandler(webapp2.RequestHandler):
 
             response_data = Contact.to_dict()
 
+
+        elif 'media' in route:
+            uid = route[len(route) - 1]
+            response_data = ''
+            if 'album' in route: 
+                album_json = json.loads(self.request.body)
+
+                album_instance = Album()
+                album = album_instance.addAlbum(album=album_json)
+
+                response_data = album.to_dict()
+            else:
+                status_int = 500
+                response_data = {'message' : 'Error request not understood'}
+
+
+            
         else:
             status_int = 500
             response_data = {'message' : 'Error request not understood'}

@@ -23,7 +23,8 @@ export const album_file_type = {
 	album_id : '',
 	album_name : '',
 	description : '',
-	genre : '',
+    genre : '',
+    number_songs : '',
 	playtime : '',
 	timestamp : ''    
 };
