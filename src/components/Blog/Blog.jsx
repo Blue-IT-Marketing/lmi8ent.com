@@ -61,89 +61,89 @@ export default function Blog() {
 
 	}, [category]);
   
-  const title = `${category[0].toUpperCase()}${category.slice(1)} News`;
+	const title = `${category[0].toUpperCase()}${category.slice(1)} News`;
 
 	return (
-    <Fragment>
-      <div className="box box-body">
-        <div className="box box-header">
-          <h3 className="box-title">
-            <strong>
-              {" "}
-              <i className="fa fa-file-text"> </i> Blog{" "}
-            </strong>
-          </h3>
+		<Fragment>
+			<div className="box box-body">
+				<div className="box box-header">
+					<h3 className="box-title">
+						<strong>
+							{' '}
+							<i className="fa fa-file-text"> </i> News{' '}
+						</strong>
+					</h3>
 
-          <div className="box-tools">
-            <button
-              type="button"
-              className="btn btn-box-tool"
-              name="pages"
-              onClick={() => setCategory("entertainment")}
-            >
-              <i className="fa fa-folder"> </i> Entertainment{" "}
-            </button>
+					<div className="box-tools">
+						<button
+							type="button"
+							className="btn btn-box-tool"
+							name="pages"
+							onClick={() => setCategory('entertainment')}
+						>
+							<i className="fa fa-folder"> </i> Entertainment{' '}
+						</button>
 
-            <button
-              type="button"
-              className="btn btn-box-tool"
-              name="posts"
-              onClick={() => setCategory("sports")}
-            >
-              <i className="fa fa-folder"> </i> Sports{" "}
-            </button>
-            <button
-              type="button"
-              className="btn btn-box-tool"
-              name="categories"
-              onClick={() => setCategory("business")}
-            >
-              {" "}
-              <i className="fa fa-folder"> </i> Business{" "}
-            </button>
-            <button
-              type="button"
-              className="btn btn-box-tool"
-              name="categories"
-              onClick={() => setCategory("tech")}
-            >
-              {" "}
-              <i className="fa fa-folder"> </i> Tech{" "}
-            </button>
-            <button
-              type="button"
-              className="btn btn-box-tool"
-              name="categories"
-              onClick={() => setCategory("science")}
-            >
-              {" "}
-              <i className="fa fa-folder"> </i> Science{" "}
-            </button>
-            <button
-              type="button"
-              className='btn btn-box-tool'
-              name='categories'
-              onClick={() => setCategory("health")}
-            >{" "} <i className='fa fa-folder'> </i> Health
+						<button
+							type="button"
+							className="btn btn-box-tool"
+							name="posts"
+							onClick={() => setCategory('sports')}
+						>
+							<i className="fa fa-folder"> </i> Sports{' '}
+						</button>
+						<button
+							type="button"
+							className="btn btn-box-tool"
+							name="categories"
+							onClick={() => setCategory('business')}
+						>
+							{' '}
+							<i className="fa fa-folder"> </i> Business{' '}
+						</button>
+						<button
+							type="button"
+							className="btn btn-box-tool"
+							name="categories"
+							onClick={() => setCategory('tech')}
+						>
+							{' '}
+							<i className="fa fa-folder"> </i> Tech{' '}
+						</button>
+						<button
+							type="button"
+							className="btn btn-box-tool"
+							name="categories"
+							onClick={() => setCategory('science')}
+						>
+							{' '}
+							<i className="fa fa-folder"> </i> Science{' '}
+						</button>
+						<button
+							type="button"
+							className='btn btn-box-tool'
+							name='categories'
+							onClick={() => setCategory('health')}
+						>{' '} <i className='fa fa-folder'> </i> Health
 
-            </button>
-          </div>
-        </div>
+						</button>
+					</div>
+				</div>
 
-        <div className="box box-footer">
-          <div className="box box-header">
-            <h3 className="box-title">
-              <strong>
-                {" "}
-                <i className="fa fa-files-o"> </i> {title}{" "}
-              </strong>
-            </h3>
-          </div>
-          {posts.map((post, index) => {
-            return <BlogPost post_data={post} key={index} />;
-          })}
-        </div>
-      </div>
-    </Fragment>
-  );
+				<div className="box box-footer">
+					<div className="box box-header">
+						<h3 className="box-title">
+							<strong>
+								{' '}
+								<i className="fa fa-files-o"> </i> {title}{' '}
+							</strong>
+						</h3>
+					</div>
+					{posts.map((post, index) => {
+						return <BlogPost post_data={post} key={index} />;
+					})}
+				</div>
+			</div>
+		</Fragment>
+	);
 }

@@ -46,22 +46,22 @@ export const load_music_files = async uid => {
 
 
 export const create_album = async album => {
-    let results = { status: true, payload: [], error: {} };
+	let results = { status: true, payload: [], error: {} };
 
-    await axios.post(profile_routes.albums_api,album).then(response => {
-        if (response.status === 200){
-            return response.data;
-        }
-        throw new Error('there was an error creating new album');
-    }).then(album => {
-        results.status = true;
-        results.payload = {...album};
-        results.error = {};
-    }).catch(error => {
-        results.status = false;
-        results.payload = {};
-        results.error = {...error};
-    })
-}
+	await axios.post(profile_routes.albums_api,album).then(response => {
+		if (response.status === 200){
+			return response.data;
+		}
+		throw new Error('there was an error creating new album');
+	}).then(album => {
+		results.status = true;
+		results.payload = {...album};
+		results.error = {};
+	}).catch(error => {
+		results.status = false;
+		results.payload = {};
+		results.error = {...error};
+	});
+};
 
 

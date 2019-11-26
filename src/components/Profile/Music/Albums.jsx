@@ -4,6 +4,8 @@ import {
 	album_file_errors_type
 } from '../profile.types';
 
+import * as profile_api from '../profile.api';
+
 import {Utils} from '../../../utilities';
 
 import {UserAccountContext} from '../../../context/UserAccount/userAccountContext';
@@ -52,8 +54,16 @@ const CreateAlbums = () => {
 	};
 
 	const doCreateAlbum = async () => {
+		const results = {status : true, payload : {}, error:{}};
 		const uid = user_account_state.user_account.uid;
-		
+
+		profile_api.create_album(album).then(response => {
+			if(response.status === 200){
+				setAlbum(response.payload);				
+			}
+		})
+
+
 	};
 
 	return(
