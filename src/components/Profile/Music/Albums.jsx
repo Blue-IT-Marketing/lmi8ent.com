@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import {
 	album_file_type,
@@ -164,8 +165,44 @@ export const CreateAlbums = () => {
 	);
 };
 
+const AlbumItem = ({album}) => {
+	return(
+		<Fragment>
+				<tr>
+					<td>{album.album_name}</td>
+					<td>{album.description}</td>
+					<td>{album.genre}</td>
+					<td>{album.number_songs}</td>
+				</tr>			
+		</Fragment>
+	)
+}
 
 export const ListAlbums = () => {
+
+	const [albums,setAlbums] = useState([]);
+	const [inline,setInline] = useState({message:'',message_type:'inf'});
+	const {user_account_state} = useContext(UserAccountContext);
+	const uid = user_account_state.user_account.uid;
+
+
+	useEffect(() => {
+		const loadAlbums = async () => {			
+			await profile_api.load_albums(uid).then(response => {
+				setAlbums(response.payload)
+			}).catch(error => {
+				setInline({message : error.message,message_type:'error'})
+			});
+
+			return true;
+		};
+
+		loadAlbums().then(respone => console.log('albums loaded'));
+	  return () => {
+		setAlbums([]);
+	  };
+	}, [])
+
 	return(
 		<Fragment>
 			<div className='box box-body'>
@@ -179,10 +216,23 @@ export const ListAlbums = () => {
 							<td>Album Name</td>
 							<td>Description</td>
 							<td>Genre</td>
-							<td></td>
+							<td>Total Songs</td>
 						</tr>
 					</thead>
+					<tbody>
+						{ albums.map(album => <AlbumItem album={album} />)}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>Album Name</td>
+							<td>Description</td>
+							<td>Genre</td>
+							<td>Total Songs</td>
+						</tr>
+
+					</tfoot>
 				</table>
+				{inline.message ? <InlineMessage message={inline.message} message_type='inf' /> : null}
 			</div>
 		</Fragment>
 	)

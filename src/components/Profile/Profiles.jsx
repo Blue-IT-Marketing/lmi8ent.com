@@ -6,7 +6,7 @@ export default function Profiles() {
 			<div className="box box-body">
 				<div className="box box-header">
 					<h3 className="box-title">
-						<strong> <i className='fa fa-users'> </i> Profiles</strong>
+						<strong> <i className='fa fa-music'> </i>{' '} Latent Media</strong>
 					</h3>
           <div className='box-tools'>
             

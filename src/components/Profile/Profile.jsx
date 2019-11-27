@@ -5,7 +5,19 @@ import Music from './Music/Music';
 import UploadVideos from './UploadVideos';
 
 export default function Profile (){
+	const [displayMenu, setMenu] = useState({ menu: false });
 	const[display,setDisplay] = useState('music');
+	const showDropdownMenu = e => {
+		e.preventDefault();
+		setMenu({ menu: true });
+		document.addEventListener('click', hideDropdownMenu);
+	};
+
+	const hideDropdownMenu = () => {
+		setMenu({ menu: false });
+		document.removeEventListener('click', hideDropdownMenu);
+	};
+
 	return (
 		<Fragment>
 			<div className="box box-body">
@@ -13,33 +25,42 @@ export default function Profile (){
 					<h3 className="box-title">
 						<strong>
 							{' '}
-							<i className="fa fa-user"> </i> Profile Manager
+							<i className="fa fa-file-sound-o"> </i> Media Manager
 						</strong>
 					</h3>
 
 					<div className="box-tools">
-						<button
-							type="button"
-							className="btn btn-box-tool"
-							name="music"
-							onClick={() => setDisplay('music')}
-						>
-							<strong>
-								<i className="fa fa-soundcloud"> </i>
-                			Music
-							</strong>
-						</button>
-						<button
-							type="button"
-							className="btn btn-box-tool"
-							name="videos"
-							onClick={() => setDisplay('videos')}
-						>
-							<strong>
-								<i className="fa fa-youtube-play"> </i>
-                			Videos
-							</strong>
-						</button>
+
+						<div className="dropdown">
+							<button
+								type="button"
+								className="btn btn-box-tool dropdown-toggle"
+								onClick={e => showDropdownMenu(e)}
+							>
+								<i className="fa fa-bars"> </i>{' '}
+							</button>
+							{displayMenu.menu ? (
+								<ul className="dropmenu">
+									<li
+										className="btn btn-block droplink"
+										name="music"
+										onClick={() => setDisplay('music')}
+									>
+										<i className="fa fa-soundcloud"> </i> Music{' '}
+									</li>
+
+									<li
+										className="btn btn-block droplink"
+										name="videos"
+										onClick={() => setDisplay('videos')}
+									>
+										<i className="fa fa-youtube-play"> </i> Videos{' '}
+									</li>
+								</ul>
+							):null
+						}
+
+					</div>
 					</div>
 				</div>
 

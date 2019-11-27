@@ -34,7 +34,8 @@
     "simple-crypto-js": "^2.0.2",
     "slackbots": "^1.2.0",
     "soundcloud": "^3.3.2",
-    "typescript": "*"
+    "typescript": "*",
+    "use-socket.io-client": "^1.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

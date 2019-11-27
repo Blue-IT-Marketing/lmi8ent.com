@@ -4,55 +4,75 @@ import ListMusic from './ListMusic';
 import { CreateAlbums, ListAlbums } from './Albums';
 
 const Music = () => {
-    const [display,setDisplay] = useState('upload-music')
+	const [displayMenu, setMenu] = useState({ menu: false });
+	const [display, setDisplay] = useState('upload-music');
+	const showDropdownMenu = e => {
+		e.preventDefault();
+		setMenu({ menu: true });
+		document.addEventListener('click', hideDropdownMenu);
+	};
+
+	const hideDropdownMenu = () => {
+		setMenu({ menu: false });
+		document.removeEventListener('click', hideDropdownMenu);
+	};
+	
 	return (
 		<Fragment>
 			<div className="box box-body">
-				<div className="box box-header">
-					<h3 classNam="box-title">Music</h3>
+				<div className="box-header">
+					<h3 className="box-title"> <i className='fa fa-music'> </i> Music</h3>
 
 					<div className="box-tools">
-						<button
-							type="button"
-							className="btn btn-box-tool"
-                            name="upload-music"
-                            onClick = {e => setDisplay(e.target.name)}
-						>
-                            Upload Music
-						</button>
-						<button
-							type="button"
-							className="btn btn-box-tool"
-                            name="list-music"
-                            onClick = {e => setDisplay(e.target.name)}
-						>
-              List Music
-						</button>
-						<button
-							type="button"
-							className="btn btn-box-tool"
-                            name="create-albums"
-                            onClick = {e => setDisplay(e.target.name)}
-						>
-              Create Albums
-						</button>
-						<button
-							type="button"
-							className="btn btn-box-tool"
-                            name="list-albums"
-                            onClick = {e => setDisplay(e.target.name)}
-						>
-              List Albums
-						</button>
+						<div className="dropdown">
+							<button
+								type="button"
+								className="btn btn-box-tool dropdown-toggle"
+								onClick={e => showDropdownMenu(e)}
+							>
+								<i className="fa fa-bars"> </i>{' '}
+							</button>
+							{displayMenu.menu ? (
+								<ul className="dropmenu">
+									<li
+										className="btn btn-block droplink"
+										name="upload-music"
+										onClick={e => setDisplay(e.target.name)}
+									>
+										<i className="fa fa-soundcloud"> </i> Add Music{' '}
+									</li>
+									<li
+										className="btn btn-block droplink"
+										name="list-music"
+										onClick={e => setDisplay('list-music')}
+									>
+										<i className="fa fa-soundcloud"> </i> List Music{' '}
+									</li>
+									<li
+										className="btn btn-block droplink"
+										name="create-albums"
+										onClick={e => setDisplay('create-albums')}
+									>
+										<i className="fa fa-music"> </i> Create Albums{' '}
+									</li>
+
+									<li
+										className="btn btn-block droplink"
+										name="list-albums"
+										onClick={e => setDisplay('list-albums')}
+									>
+										<i className="fa fa-music"> </i> List Albums{' '}
+									</li>
+								</ul>
+							) : null}
+						</div>
 					</div>
 				</div>
 
-
-                {display === 'upload-music' ? <UploadMusic /> : null}
-                {display === 'list-music' ? <ListMusic /> : null}
-                {display === 'create-albums' ? <CreateAlbums /> : null }
-                {display === 'list-albums' ? <ListAlbums /> : null}
-
+				{display === 'upload-music' ? <UploadMusic /> : null}
+				{display === 'list-music' ? <ListMusic /> : null}
+				{display === 'create-albums' ? <CreateAlbums /> : null}
+				{display === 'list-albums' ? <ListAlbums /> : null}
 			</div>
 		</Fragment>
 	);

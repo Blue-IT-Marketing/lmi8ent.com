@@ -41,14 +41,20 @@ const SideBarMenuAuth = () => {
 					<li>
 						<Link to={routes.artist_profile} title="Artist Profile">
 							<i className="fa fa-user"> </i>{" "}
-							<strong> Profile Manager</strong>{" "}
+							<strong> Media Manager</strong>{" "}
 						</Link>{" "}
+					</li>
+					<li>
+						<Link to={routes.chat_page} title='chat'>
+							<i className='fa fa-commenting'> </i>
+							<strong> Chat</strong>
+						</Link>
 					</li>
 				</ul>
 			</li>
 			<li>
 				<Link to={routes.profiles} title="Profiles">
-					<i className="fa fa-users"> </i> Profiles
+					<i className="fa fa-music"> </i> Media
 				</Link>
 			</li>
 			<li>
@@ -79,7 +85,7 @@ const SideBarMenuNonAuth = () => {
 					<li><Link to={routes.home_page} title={settings.app_long_name}><i className="fa fa-home"> </i> Home</Link></li>
 					<li><Link to={routes.about_page} title="Contact Us"><i className="fa fa-info"> </i> About</Link></li>
 					<li><Link to={routes.contact_page} title="Contact Us"><i className="fa fa-envelope"> </i> Contact</Link></li>
-					<li><Link to={routes.profiles} title="Profiles"><i className="fa fa-users"> </i> Profiles</Link></li>
+					<li><Link to={routes.profiles} title="Profiles"><i className="fa fa-music"> </i> Media</Link></li>
 					<li><Link to={routes.blog_page} title="News"><i className="fa fa-book"> </i> <strong>News</strong></Link></li>
 					<li><Link to={routes.login_page} title="Login"><i className="fa fa-sign-in"> </i> Login </Link></li>
 				</ul>

@@ -11,6 +11,7 @@ export const download_page = '/download';
 export const account_page = '/account';
 
 export const blog_page = '/blog';
+export const chat_page = '/chat';
 
 export const admin_page = '/admin-user/'; // + userid
 export const artist_profile = '/admin-profile';
@@ -21,3 +22,5 @@ export const dashboard_page = '/dashboard'; // site owner and administrator only
 
 // api routes
 export const media_files = '/api/media';
+
+export const api_user_endpoint = '/api/user';
