@@ -52,8 +52,8 @@ const SideBarMenuAuth = () => {
 				</Link>
 			</li>
 			<li>
-				<Link to={routes.blog_page} title="Blog">
-					<i className="fa fa-book"> </i> <strong>Blog</strong>
+				<Link to={routes.blog_page} title="News">
+					<i className="fa fa-book"> </i> <strong>News</strong>
 				</Link>
 			</li>
 			<li>
